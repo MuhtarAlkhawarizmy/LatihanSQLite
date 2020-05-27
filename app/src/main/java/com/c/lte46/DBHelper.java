@@ -37,7 +37,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if(csr.getCount()>0){
             csr.moveToFirst();
             do {
-                mhsArrayList.add(new Mahasiswa(csr.getString(0), csr.getString(1), csr.getString(3)));
+                mhsArrayList.add(new Mahasiswa(csr.getString(0), csr.getString(1), csr.getString(2)));
             }while (csr.moveToNext());
         }
         return mhsArrayList;
