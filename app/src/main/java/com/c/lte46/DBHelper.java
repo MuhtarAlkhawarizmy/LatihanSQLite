@@ -31,6 +31,18 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert("tb_mhs", null, cv);
     }
 
+    public void hapusData(SQLiteDatabase db, String stb){
+        db.delete("tb_mhs", "stb=?", new String[]{stb});
+    }
+
+    public void editData(SQLiteDatabase db, Mahasiswa mhs, String stb){
+        ContentValues cv=new ContentValues();
+        cv.put("stb", mhs.getStb());
+        cv.put("nama", mhs.getNama());
+        cv.put("angkatan", mhs.getAngkatan());
+        db.update("tb_mhs", cv, "stb=?", new String[]{stb});
+    }
+
     public ArrayList<Mahasiswa> getMhsArrayList(SQLiteDatabase db){
         mhsArrayList.clear();
         Cursor csr= db.rawQuery("select * from tb_mhs", null);
